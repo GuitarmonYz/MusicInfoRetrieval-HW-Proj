@@ -25,15 +25,17 @@ if (m ~= 1 && n ~=1)
 end
 
 %% Please write your code here
-[blockSize, numBlocks] = size(X);
+[blockSize, ~] = size(X);
 numOctives = 3;
-H = zeros(12, numBlocks);
+f_mid = 440 * 2^((36-69+tf)/12);
+H = zeros(12, blockSize);
 for i = 1 : 12
-    bounds = [2^(-1/24), 2^(1/24)] * f_mid * 2 * blockSize/fs;
+    bounds = [2^(-1/24), 2^(1/24)] * f_mid * 2 * (blockSize-1)/fs;
     for j = 1 : numOctives
-        tmp_bounds = [ceil(2^(j-1)*bounds(1)), floor(2^(j-1)*bounds(2))];
-        H(i, tmp_bounds(1):tmp_bounds(2)) = 1/(tmp_bounds(2)+1-tmp_bounds(1));
+        bin_bounds = [ceil(2^(j-1)*bounds(1)), floor(2^(j-1)*bounds(2))];
+        H(i, bin_bounds(1):bin_bounds(2)) = 1/(bin_bounds(2)+1-bin_bounds(1));
     end
     f_mid = f_mid * 2^(1/12);
 end
+pitchChroma = H * X.^2;
 end

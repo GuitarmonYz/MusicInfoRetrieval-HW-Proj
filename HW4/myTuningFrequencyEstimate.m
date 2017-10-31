@@ -40,15 +40,7 @@ for i = 1 : numBlocks
     spectralPeaks = mySpectralPeaks(x_block_sig);
     spectralPeaks_Hz = spectralPeaks./blockSize*fs/2;
     pitch_midi = 69 + 12 * log2(spectralPeaks_Hz/f_ref);
-    deviation((i-1)*20+1:i*20) = abs(pitch_midi - round(pitch_midi))*100;
+    deviation((i-1)*20+1:i*20) = (round(pitch_midi)-pitch_midi)*100;
 end
-set_deviation = unique(deviation);       
-sort_deviation = sort(deviation);
-hist = zeros(size(set_deviation));
-for i = 1:length(set_deviation)
-    hist(i) = sum(sort_deviation == set_deviation(i));
-end
-% hist = sum(sort_deviation == set_deviation');
-hist = sort(hist);
-tf = hist(end);
+tf = mode(deviation);
 end

@@ -14,6 +14,6 @@ end
 
 %% Please write your code here
 fft_x = abs(fft(x));
-[~,indices] = findpeaks(fft_x, 'descend');
-spectralPeaks = indices(0:20);
+[~,indices] = findpeaks(fft_x, 'SortStr', 'descend');
+spectralPeaks = indices(1:20);
 end
