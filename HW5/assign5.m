@@ -16,4 +16,12 @@ for i = 1 : numClasses
     end
 end
 %% C.2
-[~,accuracy_seq] = myForwardSelection(data, labels, K, num_folds, false);
+[sel_feature_set,accuracy_seq] = myForwardSelection(data, labels, K, num_folds, false);
+%% D.1
+num_folds = 10;
+K = [1,3,7];
+res = zeros(1,length(K));
+for i = 1 : length(K)
+    [avg_accuracy, ~, ~] = myCrossValidation(data(sel_feature_set,:), labels, K(i), num_folds);
+    res(i) = avg_accuracy;
+end

@@ -24,6 +24,7 @@ function [sel_feature_set, accuracy_seq, conf_mat] = myForwardSelection(data, la
 features = (1:num_features);
 accuracy_seq = zeros(1, num_features);
 sel_feature_set = [];
+itr_sel_feature_set = [];
 global_best = 0;
 j = 1;
 while ~isempty(features)
@@ -31,7 +32,7 @@ while ~isempty(features)
     feature_sel = -1;
     local_sel_feature_set = [];
     for i = 1 : length(features)
-        tmp_sel_feature_set = [sel_feature_set,features(i)];
+        tmp_sel_feature_set = [itr_sel_feature_set,features(i)];
         [avg_accuracy, ~, local_conf_mat] =myCrossValidation(data(tmp_sel_feature_set,:), labels, K, num_folds);
         if best_accuracy < avg_accuracy
             feature_sel = features(i);
@@ -40,6 +41,7 @@ while ~isempty(features)
             local_max_conf_mat = local_conf_mat;
         end
     end
+    itr_sel_feature_set = local_sel_feature_set;
     features(features == feature_sel) = [];
     accuracy_seq(j) = best_accuracy;
     if best_accuracy > global_best
