@@ -27,7 +27,7 @@ end
 %% Please write your code here
 [fftLength, ~] = size(X);
 numOctives = 3;
-f_mid = 440 * 2^((48-69-tf)/12);
+f_mid = 440 * 2^((48-69+tf)/12);
 H = zeros(12, fftLength);
 for i = 1 : 12
     bounds = [2^(-1/24), 2^(1/24)] * f_mid * 2 * (fftLength-1)/fs;

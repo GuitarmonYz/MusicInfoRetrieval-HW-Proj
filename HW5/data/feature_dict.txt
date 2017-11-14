@@ -1,0 +1,12 @@
+// Feature, Feature Index
+Root Mean Square Mean, 1
+Zero Crossing Rate Mean, 2
+Specral Centroid Mean, 3
+Spectral Flux Mean, 4
+Spectral Crest Mean, 5
+Root Mean Square Std, 6
+Zero Crossing Rate Std, 7
+Specral Centroid Std, 8
+Spectral Flux Std, 9
+Spectral Crest Std, 10
+
