@@ -25,5 +25,5 @@ confmat_res = zeros(numClass,numClasses*numClasses);
 for i = 1 : length(K)
     [avg_accuracy, ~, tmp_confmat] = myCrossValidation(data(sel_feature_set,:), labels, K(i), num_folds);
     acc_res(i) = avg_accuracy;
-    confmat_res(:,(numClasses*(i-1)+1):numClasses*i) = tmp_confmat;
+    confmat_res(:,(numClasses*(i-1)+1:numClasses*i))
 end

@@ -51,4 +51,7 @@ while ~isempty(features)
     end
     j = j + 1;
 end
+if req_plot 
+    plot(accuracy_seq);
+end
 end
