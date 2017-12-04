@@ -1,4 +1,4 @@
-function [f0] = myPitchTrackMod2(xb, fs, voicingThres_hps, voicingThres_acf)
+function [f0] = myPitchTrackMod2(xb, fs)
 
 %% Blockwise Pitch Tracking based on a modified approach
 % Input:

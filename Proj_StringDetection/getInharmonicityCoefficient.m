@@ -1,7 +1,7 @@
 function beta_inharmonicity = getInharmonicityCoefficient( f0, fk )
 % Calculate the inharmonicity coefficient given f0 and fk
-% f0: numBlocks*1 scalar
-% fk: 15*numBlocks partials of f0
+% f0: numBlocks*1 scalar in Hz
+% fk: numberOfPartials*numBlocks partials of f0 in Hz
 % beta_inharmonicity: numBlocks * 1
 zero_indices = find(~f0);
 beta_inharmonicity = zeros(length(f0), 1);

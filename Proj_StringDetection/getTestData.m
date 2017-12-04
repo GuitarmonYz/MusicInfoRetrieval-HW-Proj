@@ -1,10 +1,10 @@
 function [ testData, featureMatrix_test, trueVal_cat ] = getTestData( audio_path, annotation_path, blockSize, hopSize, fs )
 %UNTITLED6 Summary of this function goes here
 %   Detailed explanation goes here
-numberOfPartials = 11;
+numberOfPartials = 6;
 audio_list = dir(audio_path);
 annotation_list = dir(annotation_path);
-featureMatrix_test = zeros(numberOfPartials*2+1, 13*length(audio_list));
+featureMatrix_test = zeros(numberOfPartials*2+2, 13*length(audio_list));
 trueVal = zeros(13*length(audio_list),1);
 for i = 1 : length(audio_list)
     test_audio = audioread(strcat('./testSet/audio/',audio_list(i).name));
@@ -26,6 +26,12 @@ end
 beta = featureMatrix_test(1,:);
 featureMatrix_test(:,beta>3) = [];
 trueVal(beta > 3) = [];
+first_rel = featureMatrix_test(2,:);
+featureMatrix_test(:,first_rel > 10) = [];
+trueVal(first_rel > 10) = [];
+
+% featureMatrix_test = featureMatrix_test./max(featureMatrix_test, 2);
+
 trueVal_cat = categorical(trueVal);
 % featureMatrix_norm = zScoreNormalize(featureMatrix_test);
 

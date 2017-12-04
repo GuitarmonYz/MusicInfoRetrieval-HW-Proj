@@ -1,5 +1,4 @@
 function [f0] = myComputeF0FromHPS(X, fs, order)
-
 %% Computes the fundamental frequency f0 from a spectrogram using HPS
 % Input:
 %	X:			(fftLength / 2 x numBlocks) float matrix, mag. spectrogram

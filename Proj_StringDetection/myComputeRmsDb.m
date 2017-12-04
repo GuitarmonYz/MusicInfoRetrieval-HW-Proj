@@ -1,5 +1,4 @@
 function [rmsDb] = myComputeRmsDb(xb) 
-
 %% Computes the rms amplitude of each block of the input blocked audio 
 % Input:
 %	xb: 	(blockSize x numBlocks) float matrix, blocked audio 

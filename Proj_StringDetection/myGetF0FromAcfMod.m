@@ -1,5 +1,4 @@
 function [f0] = myGetF0FromAcfMod(acfVector, fs)
-
 %% Please insert your code here
 len_v = length(acfVector);
 pre_diff = acfVector(21)-acfVector(20);
