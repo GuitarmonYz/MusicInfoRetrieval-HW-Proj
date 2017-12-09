@@ -1,5 +1,4 @@
 function [f0] = myPitchTrackHps(xb, fs)
-
 %% Blockwise Pitch Tracking based on HPS approach
 % Input:
 %   x:          (N x 1) float vector, input signal

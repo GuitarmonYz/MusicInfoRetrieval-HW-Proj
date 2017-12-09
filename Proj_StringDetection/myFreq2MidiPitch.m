@@ -11,8 +11,6 @@ function  [pitchInMidi] = myFreq2MidiPitch(pitchInHz)
 if (n>1)
     error('illegal input signal');
 end
-
-%% Please write your code here
 f_ref = 440;
 pitchInMidi = 69 + 12 * log2(pitchInHz/f_ref);
 end

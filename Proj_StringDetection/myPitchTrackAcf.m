@@ -1,5 +1,4 @@
 function [f0] = myPitchTrackAcf(xb, fs)
-
 %% Blockwise Pitch Tracking based on ACF
 % Input:
 %   x:          (N x 1) float vector, input signal

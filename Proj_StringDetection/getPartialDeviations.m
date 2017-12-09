@@ -1,6 +1,5 @@
 function [ partial_deviation_norm ] = getPartialDeviations(f0, fk, beta)
-%UNTITLED7 Summary of this function goes here
-%   Detailed explanation goes here
+%% compute deviation of estimated partials with theoretical partials
 % f0: numBlocks * 1
 % fk: numberOfPartials * numBlocks
 % beta: numBlocks * 1

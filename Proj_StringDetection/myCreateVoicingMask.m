@@ -6,8 +6,6 @@ function [mask] = myCreateVoicingMask(rmsDb, thresholdDb)
 %	thresholdDb:	float, rms amplitude threshold based on which mask is computed 
 % Output:
 %	mask: 		(numBlocks x 1) binary int vector
-
-%% Please insert your code here
 mask = zeros(length(rmsDb),1);
 mask(rmsDb >= thresholdDb) = 1;
 end

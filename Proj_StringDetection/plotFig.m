@@ -1,3 +1,4 @@
+%% plot spectrum of different audio samples for debugging
 x_1 = audioread('./trainSet/audio/G53-50110-1111-00011.wav');
 [xb, ~] = myBlockAudio(x_1,blockSize,hopSize,fs);
 [~, numBlocks] = size(xb);

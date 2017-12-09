@@ -15,7 +15,7 @@ fk_centroid = zeros(numBlocks-(start+end_-1), 1);
 for i = start : numBlocks - end_
     f_bins = X(:,i);
 % thresholding bins
-    f_bins(f_bins < 0.4) = 0;
+    f_bins(f_bins < 0.2) = 0;
 % findpeaks in frequency domain
 %     [~, f_k] = findpeaks(f_bins, 'SortStr', 'descend');
     [~, f_k] = findpeaks(f_bins);

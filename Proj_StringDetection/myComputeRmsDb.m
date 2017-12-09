@@ -5,8 +5,5 @@ function [rmsDb] = myComputeRmsDb(xb)
 % Output:
 %	rmsDb: 	(numBlocks x 1) float vector, rms amplitude of each block in decibels	
 
-
-%% Please insert your code here
 rmsDb = 20 * log10(sqrt(mean(xb.^2)));
-
 end

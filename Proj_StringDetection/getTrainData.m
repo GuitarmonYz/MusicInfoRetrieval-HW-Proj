@@ -1,5 +1,5 @@
 function [ train_data ] = getTrainData( audio_path, annotation_path, blockSize, hopSize, fs )
-%UNTITLED5 Summary of this function goes here
+%% get training data given file path
 %   Detailed explanation goes here
 audio_list = dir(audio_path);
 annotation_matrix = csvread(annotation_path);

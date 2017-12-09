@@ -1,9 +1,7 @@
+%% set hyper params
 blockSize = 4096;
 hopSize = 2048;
 fs = 44100;
-% test = audioread('audio/G53-55305-1111-00032.wav');
-% featureMatrix = getFeatures(test, blockSize, hopSize, fs);
-
 %% prepare trainning data
 % train_audio_path = './trainSet/audio/*.wav';
 % train_annotation_path = './trainSet/annotation/Fender Strat Clean Neck SC.csv';

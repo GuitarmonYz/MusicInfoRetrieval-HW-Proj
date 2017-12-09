@@ -1,5 +1,4 @@
 function [xb, timeInSec] = myBlockAudio(x, blockSize, hopSize, fs)
-
 %% Blocks the input audio signal into overlapping buffers
 % Input:
 %   x:          N*1 float vector, input signal
@@ -12,8 +11,7 @@ function [xb, timeInSec] = myBlockAudio(x, blockSize, hopSize, fs)
 %   timeInSec:  (numBlocks x 1) float vector, time stamp (sec) of each block   
 % Note:
 %   1)  numBlocks depends on the length of the audio, zeropadding may be needed
-
-% Check input dimensions 
+%% Check input dimensions 
 [~,n] = size(x);
 if (n>1)
     error('illegal input signal');
@@ -30,9 +28,7 @@ end
 if (m ~= 1 && n ~=1)
     error('illegal fs');
 end
-
-%% Please write your code here
-
+%% main code
 % get signal length
 signal_length = length(x);
     

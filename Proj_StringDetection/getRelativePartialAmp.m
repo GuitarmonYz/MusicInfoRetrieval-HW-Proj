@@ -1,5 +1,5 @@
 function rel_partial_amp = getRelativePartialAmp(X, f0, f0_bin, fk_bin, start, end_)
-%UNTITLED2 Summary of this function goes here
+%% get relative amp by fk / f0
 % X: fftlength/2 * numBlocks
 % f0_bin: numBlocks - (start + end_ - 1) * 1 bin index of fundamental freq
 % fk_bin: numberOfPartials * numBlocks - (start + end_ - 1) bin index of partial freqs

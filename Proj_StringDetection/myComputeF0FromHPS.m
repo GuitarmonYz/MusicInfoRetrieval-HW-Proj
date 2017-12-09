@@ -6,8 +6,6 @@ function [f0] = myComputeF0FromHPS(X, fs, order)
 % 	order:		int, specifying the order for computing HPS
 % Output:
 % 	f0:			(numBlocks x 1) float vector, fundamental frequency of all blocks
-
-%% Please insert your code here
 tmp_hps = X;
 for i = 2:order
     tmp_hps = tmp_hps .* [X(1:i:end,:); zeros(size(X,1)-size(X(1:i:end,:),1), size(X,2))];

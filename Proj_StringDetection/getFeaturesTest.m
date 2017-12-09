@@ -1,8 +1,6 @@
 function [featureVector] = getFeaturesTest( x, blockSize, hopSize, fs, numberOfPartials )
-%UNTITLED3 Summary of this function goes here
-%   Detailed explanation goes here
-% voicingThres_hps = -40;
-% voicingThres_acf = -20;
+%% same feature extraction withn getFeature but different aggregation approach for test data
+% Block audio
 [xb, ~] = myBlockAudio(x,blockSize,hopSize,fs);
 f0 = myPitchTrackMod2(xb, fs);
 % Apply window functions
@@ -24,17 +22,8 @@ f0 = f0 .* f0_bin_mask;
 beta_inharmonicity = getInharmonicityCoefficient( f0, fk_hz );
 rel_partial_amp = getRelativePartialAmp(X, f0, f0_bin, fk_bin, start, end_);
 partial_deviation_norm = getPartialDeviations(f0, fk_hz, beta_inharmonicity);
-% [mean_rel, var_rel, skew_rel, max_rel, min_rel] = getStatistics(rel_partial_amp);
-% [mean_par, var_par, skew_par, max_par, min_par] = getStatistics(partial_deviation_norm);
 fk_centroid = fk_centroid(fk_centroid ~= 0);
-% if (length(fk_centroid) ~= size(rel_partial_amp, 2))
-%    disp(length(fk_centroid));
-%    disp(size(rel_partial_amp, 2));
-% end
 featureMatrix_raw = [beta_inharmonicity';rel_partial_amp;partial_deviation_norm;fk_centroid'];
-% numSelBlocks = size(rel_partial_amp, 2);
-% sel_start = floor(numSelBlocks/6)+1;
-% sel_end = 5 * floor(numSelBlocks/6);
 featureVector = median(featureMatrix_raw,2);
 end
 

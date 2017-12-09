@@ -1,9 +1,7 @@
 function [featureMatrix] = getFeatures(x, blockSize, hopSize, fs, numberOfPartials)
-%UNTITLED3 Summary of this function goes here
-%   featureMatrix: 17 * 8)
-% voicingThres_hps = -40;
-% voicingThres_acf = -20;
-% numberOfPartials = 15;
+%% get feature matrix give audio file
+%   featureMatrix: (numberOfPartials+2) * 8
+% block audio
 [xb, ~] = myBlockAudio(x,blockSize,hopSize,fs);
 f0 = myPitchTrackMod2(xb, fs);
 % Apply window functions
@@ -25,13 +23,8 @@ f0 = f0 .* f0_bin_mask;
 beta_inharmonicity = getInharmonicityCoefficient( f0, fk_hz );
 rel_partial_amp = getRelativePartialAmp(X, f0, f0_bin, fk_bin, start, end_);
 partial_deviation_norm = getPartialDeviations(f0, fk_hz, beta_inharmonicity);
-% [mean_rel, var_rel, skew_rel, max_rel, min_rel] = getStatistics(rel_partial_amp);
-% [mean_par, var_par, skew_par, max_par, min_par] = getStatistics(partial_deviation_norm);
 fk_centroid = fk_centroid(fk_centroid ~= 0);
-if (length(fk_centroid) ~= size(rel_partial_amp, 2))
-   disp(length(fk_centroid));
-   disp(size(rel_partial_amp, 2));
-end
+
 featureMatrix_raw = [beta_inharmonicity';rel_partial_amp;partial_deviation_norm;fk_centroid'];
 observations = size(featureMatrix_raw, 2);
 featureMatrix = zeros(size(featureMatrix_raw,1),8);
@@ -39,9 +32,6 @@ feature_hop = floor(observations/8);
 loop_length = feature_hop*8;
 k = 1;
 for i = 1 :feature_hop: loop_length
-%     if i + feature_hop -1 > size(featureMatrix,2)
-%         break;
-%     end
     if (feature_hop + i - 1 > observations)
         tmp_featureMatrix = featureMatrix_raw(:,i:end);
         featureMatrix(:,k) = mean(tmp_featureMatrix, 2);

@@ -1,6 +1,5 @@
 function [ center_partial ] = getPartialCentroid( x, blockSize, hopSize, fs )
-%UNTITLED2 Summary of this function goes here
-%   Detailed explanation goes here
+%% get partial centroid based on bin index
 [xb, ~] = myBlockAudio(x,blockSize,hopSize,fs);
 [~, numBlocks] = size(xb);
 window = repmat(hann(blockSize),1,numBlocks);

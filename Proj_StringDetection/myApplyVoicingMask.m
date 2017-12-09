@@ -6,8 +6,5 @@ function [f0Adj] = myApplyVoicingMask(f0, mask)
 %	mask:	(numBlocks x 1) binary int vector
 % Output: 
 %	f0Adj:	(numBlocks x 1) float vector, fundamental frequency (Hz) for each audio block with voicing detection
-
-
-%% Please insert your code here
 f0Adj = f0.*mask;
 end
