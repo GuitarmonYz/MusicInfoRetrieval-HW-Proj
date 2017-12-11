@@ -1,6 +1,7 @@
 function [ testData, featureMatrix_test, trueVal_cat ] = getTestData( audio_path, annotation_path, blockSize, hopSize, fs )
 %% given test data path output test data
-%   Detailed explanation goes here
+% testData: numberOfValidSamples * 2 table
+% trueVal_cat: numberOfValidSamples * 1 ground truth in catagory
 numberOfPartials = 6;
 audio_list = dir(audio_path);
 annotation_list = dir(annotation_path);
@@ -33,7 +34,6 @@ trueVal(first_rel > 10) = [];
 featureMatrix_test = featureMatrix_test./max(featureMatrix_test, 2);
 
 trueVal_cat = categorical(trueVal);
-% featureMatrix_norm = zScoreNormalize(featureMatrix_test);
 testData = table(trueVal_cat, featureMatrix_test');
 
 end

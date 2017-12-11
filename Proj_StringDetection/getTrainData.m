@@ -1,4 +1,4 @@
-function [ train_data ] = getTrainData( audio_path, annotation_path, blockSize, hopSize, fs )
+function [ train_data, Y_cat ] = getTrainData( audio_path, annotation_path, blockSize, hopSize, fs )
 %% get training data given file path
 %   Detailed explanation goes here
 audio_list = dir(audio_path);
